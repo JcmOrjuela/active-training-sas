@@ -28,9 +28,16 @@
 
         nav {
             background: #111827;
-            text-align: center;
-            padding: 1rem;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 1rem;
         }
 
         nav a {
@@ -46,6 +53,42 @@
         nav a:hover {
             color: #facc15;
             border-bottom: 2px solid #facc15;
+        }
+
+        /* Botón hamburguesa */
+        .menu-toggle {
+            display: none;
+            background: linear-gradient(135deg, #111827, #1f2937);
+            border: none;
+            color: pink;
+            font-size: 1.8rem;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 0.8rem;
+        }
+
+        /* Estilo responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                padding: 0;
+            }
+
+            .nav-container a {
+                display: block;
+                margin: 12px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav.active .nav-container {
+                display: flex;
+            }
         }
 
         section {
@@ -93,16 +136,21 @@
         <p>Entrena con propósito, vive con energía</p>
     </header>
 
-    <nav>
-        <a href="catalogo.pdf">CATÁLOGO</a>
-        <a href="politica_datos_personales.pdf">POLÍTICA DATOS PERSONALES</a>
-        <a href="portafolio_servicios.pdf">PORTAFOLIO DE SERVICIOS</a>
-        <a href="clientes_potenciales.pdf">CLIENTES POTENCIALES</a>
-        <a href="politicas.pdf">POLÍTICAS CONTABLES</a>
+    <nav id="navbar">
+        <button class="menu-toggle" id="menu-btn">☰</button>
+        <div class="nav-container">
+            <a href="catalogo.pdf">CATÁLOGO</a>
+            <a href="politica_datos_personales.pdf">POLÍTICA DATOS PERSONALES</a>
+            <a href="portafolio_servicios.pdf">PORTAFOLIO DE SERVICIOS</a>
+            <a href="clientes_potenciales.pdf">CLIENTES POTENCIALES</a>
+            <a href="politicas_contables.pdf">POLÍTICAS CONTABLES</a>
+        </div>
     </nav>
 
     <section id="catalogo">
-        <h2>Catálogo 2025</h2>
+        <h2>En Active Training SAS creemos que cada movimiento cuenta. Creamos ropa deportiva para mujer que une comodidad, diseño y rendimiento, inspirando confianza y actitud en cada entrenamiento. Descubre prendas que se adaptan a tu ritmo y reflejan tu fuerza interior.
+
+SIENTE TU MEJOR VERSION CON LA ENERGIA DEL MOVIMIENTO</h2>
         <video controls>
             <source src="video.mp4" type="video/mp4">
             Tu navegador no soporta la reproducción de video.
@@ -124,6 +172,15 @@
     <footer>
         <p>&copy; 2025 ACTIVE TRAINING SAS. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const navbar = document.getElementById('navbar');
+
+        menuBtn.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>
